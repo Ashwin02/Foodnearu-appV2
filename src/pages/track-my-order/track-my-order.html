@@ -1,0 +1,87 @@
+<!--
+  Generated template for the TrackMyOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Track My Order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+
+    </ion-refresher-content>
+  </ion-refresher>
+
+      <!--<ion-card>
+
+        <ion-card-header text-center>
+          Order Details
+        </ion-card-header>
+
+        <ion-card-content>
+        </ion-card-content>
+
+    </ion-card>-->
+
+   
+
+        <ion-title text-center>Order Tracking</ion-title>
+
+            <div id="bar"></div>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-3 >
+                  <h4> Status:</h4>
+                </ion-col>
+                <ion-col col-9 >
+                  <h4>{{orderSatus}}</h4>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+    <!--<ion-card padding>
+      <ion-title> Thank you for ordering from Foodnearu. </ion-title>
+    </ion-card>
+
+      <div id="bar" padding></div>-->
+
+     <ion-card *ngIf="driverDetails">
+
+        <ion-card-header text-center>
+         Your order will be delivered by
+        </ion-card-header>
+
+        <ion-card-content>
+          
+          
+        <ion-list no-lines padding>
+          <ion-item>
+            <ion-icon name="contact" item-left></ion-icon>
+            <h2>Karthik Reddy</h2>
+            <p>2923939191</p>
+            <button ion-button clear item-end>Call</button>
+          </ion-item>
+        </ion-list>
+              
+
+        </ion-card-content>
+
+    </ion-card>
+
+
+</ion-content>

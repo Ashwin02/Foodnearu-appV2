@@ -1,0 +1,104 @@
+<!--
+  Generated template for the PaymentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Payment</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-title text-center padding> Your Order Details </ion-title>
+
+    <ion-grid padding>
+      <ion-row>
+        <ion-col col-6>Subtotal: </ion-col>
+        <ion-col col-6 text-right>$6.75</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>Tax: </ion-col>
+        <ion-col col-6 text-right>$0.75</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>Total: </ion-col>
+        <ion-col col-6 text-right>$7.32</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3><button ion-button color="dark" outline>Tip:</button></ion-col>
+        <ion-col col-3 text-center><button ion-button outline>10%</button></ion-col>
+        <ion-col col-3 text-center><button ion-button outline>15%</button></ion-col>
+        <ion-col col-3><ion-input type="number" value="" placeholder="Tip"></ion-input></ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <hr />
+
+    <ion-item no-lines padding>
+      <ion-label>Have a Coupon/Promo Code?</ion-label>
+      <ion-checkbox color="dark" [(ngModel)]="promoCode"></ion-checkbox>
+    </ion-item>
+
+    <ion-grid *ngIf="promoCode" padding>
+      <ion-row>
+        <ion-col col-8><ion-input type="text" value="" placeholder="Enter a Promo Code"></ion-input></ion-col>
+        <ion-col col-4><button ion-button outline>Apply</button></ion-col>
+      </ion-row>
+    </ion-grid>
+
+     <ion-item no-lines >
+      <ion-label>Have a Gift Card?</ion-label>
+      <ion-checkbox color="dark" [(ngModel)]="giftCard"></ion-checkbox>
+    </ion-item>
+
+    <ion-grid *ngIf="giftCard" padding>
+      <ion-row>
+        <ion-col col-8><ion-input type="text" value="" placeholder="Enter a Code"></ion-input></ion-col>
+        <ion-col col-4><button ion-button outline>Apply</button></ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <hr />
+
+    <h5 padding text-center> Payment Method</h5> 
+
+    <ion-list radio-group [(ngModel)]="paymentMethod" no-lines> 
+        <ion-item>
+          <ion-label><ion-icon name="logo-usd"></ion-icon> Cash on Delivery</ion-label>
+          <ion-radio checked="true" value="cod" (click)="payment()"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label><ion-icon name="card"></ion-icon> Credit Card</ion-label>
+          <ion-radio value="card" (click)="payment()"></ion-radio>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="cardFlag">
+      <ion-item>
+        <ion-label color="primary">Card number: </ion-label>
+        <ion-input type="number" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">Exp: </ion-label>
+        <ion-input type="number" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">CVV: </ion-label>
+        <ion-input type="number" placeholder=""></ion-input>
+      </ion-item>
+    </ion-list>
+
+
+    <button ion-button full [disabled]="!cardFlag">Complete Order</button>
+    
+</ion-content>
